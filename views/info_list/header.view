@@ -26,8 +26,8 @@ widget(container_z, {
       widget(container_y, {
         align: center;
         width: 4em;
-        clickable: $ui.pointerVisible || ($ui.touch && ENABLED);
-        //alpha: iir($ui.pointerVisible || ($ui.touch && ENABLED), 4);
+        clickable: $ui.pointerVisible || ($ui.touch && true);
+        alpha: iir($ui.pointerVisible || ($ui.touch && true), 4);
         onEvent(activate, event("back"));
         navFocusable: false;
         widget(icon, {
