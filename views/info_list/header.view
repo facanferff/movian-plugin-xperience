@@ -2,8 +2,8 @@ widget(container_z, {
     height: 3.5em;
     zoffset: 10;
     widget(quad, {
-      color: 0;
-      alpha: 0.2;
+      color: $view.headerPrimaryColor * 1.5;
+      alpha: 0.3;
     });
 
     hbox({
@@ -11,6 +11,7 @@ widget(container_z, {
       image({
         align: left;
         source: $self.model.metadata.icon;
+        $view.headerPrimaryColor = RGBToString(primaryColor() * 0.3);
       });
     });
 
