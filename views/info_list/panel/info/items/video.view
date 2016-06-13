@@ -54,6 +54,74 @@ widget(container_y, {
     });
   });
 
+  // View/Like/Dislike count
+  widget(container_z, {
+    height: 1.7em;
+    hidden: $clone.focused.metadata.viewCount1 < 1 &&
+            $clone.focused.metadata.likeCount < 1 &&
+            $clone.focused.metadata.dislikeCount < 1;
+
+    widget(quad, {
+      color: $clone.focused.primaryColor * 1.9;
+    });
+
+    widget(container_x, {
+      margin: [1em, 0, 1em, 0];
+      //debug: true;
+
+      widget(container_x, {
+        hidden: $clone.focused.metadata.viewCount < 1;
+        width: 6em;
+        spacing: 0.5em;
+        align: left;
+        //debug: true;
+
+        icon({
+          size: 0.8em;
+          source: "img/ic_play_arrow_48px.svg";
+        });
+
+        label({
+          caption: value2quantity($clone.focused.metadata.viewCount);
+        });
+      });
+
+      widget(container_x, {
+        hidden: $clone.focused.metadata.likeCount < 1;
+        width: 6em;
+        spacing: 0.5em;
+        align: left;
+        //debug: true;
+
+        icon({
+          size: 0.8em;
+          source: "img/ic_thumb_up_48px.svg";
+        });
+
+        label({
+          caption: value2quantity($clone.focused.metadata.likeCount);
+        });
+      });
+
+      widget(container_x, {
+        hidden: $clone.focused.metadata.dislikeCount < 1;
+        width: 6em;
+        spacing: 0.5em;
+        align: left;
+        //debug: true;
+
+        icon({
+          size: 0.8em;
+          source: "img/ic_thumb_down_48px.svg";
+        });
+
+        label({
+          caption: value2quantity($clone.focused.metadata.dislikeCount);
+        });
+      });
+    });
+  });
+
   // Seen
   widget(container_z, {
     height: 1.7em;
