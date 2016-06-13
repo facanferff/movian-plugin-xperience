@@ -1,52 +1,67 @@
-widget(container_x, {
+widget(container_z, {
   focusable: 0.6;
   focusOnClick: true;
   onEvent(activate, navOpen($self.url, void, void, $parent.model));
   onEvent(itemMenu, eventWithProp(videoInfo, $self));
 
-  //debug: true;
-
-  widget(image, {
+  widget(container_x, {
     //debug: true;
-    width: 4em * $self.itemHeight;
-    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
-    source: $self.metadata.icon ?? ($self.url + "#cover");
-    $self.primaryColor = RGBToString(primaryColor() * 0.3);
+
+    widget(image, {
+      //debug: true;
+      width: 4em * $self.itemHeight;
+      color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+      source: $self.metadata.icon ?? ($self.url + "#cover");
+      $self.primaryColor = RGBToString(primaryColor() * 0.3);
+    });
+
+    widget(dummy, {
+      //debug: true;
+      width: 1em;
+    });
+
+    widget(label, {
+      //debug: true;
+      caption: $self.metadata.title;
+      color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+      sizeScale: 1.0 * $self.textSize;
+      //width: $ui.width;
+      filterConstraintX: true;
+    });
+
+    widget(dummy, { width: 0.5em; });
+
+    widget(container_x, {
+      widget(label, {
+        //debug: true;
+        hidden: !($self.restartpos > 0);
+        caption: value2duration($self.restartpos) + " / ";
+        color: select(isFocused() || isHovered() || isPressed(), 0.7, 0.4);
+        sizeScale: 0.9 * $self.textSize;
+        //width: 10em;
+        align: center;
+      });
+
+      widget(label, {
+        //debug: true;
+        filterConstraintY: true;
+        caption: value2duration($self.metadata.duration);
+        color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+        sizeScale: 1.0 * $self.textSize;
+        //width: 10em;
+        align: right;
+      });
+    });
+
+    widget(dummy, { width: 0.5em; });
+
+    widget(image, {
+      //debug: true;
+      width: 1.4em * $self.itemHeight;
+      color: $self.playcount < 1;
+      alpha: !($self.playcount < 1);
+      source: "img/ic_check_48px.svg";
+    });
+
   });
-
-  widget(dummy, {
-    //debug: true;
-    width: 1em;
-  });
-
-  widget(label, {
-    //debug: true;
-    caption: $self.metadata.title;
-    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
-    sizeScale: 1.0 * $self.textSize;
-    //width: $ui.width;
-    filterConstraintX: true;
-  });
-
-  widget(dummy, { width: 0.5em; });
-
-  widget(label, {
-    //debug: true;
-    caption: value2duration($self.metadata.duration);
-    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
-    sizeScale: 1.0 * $self.textSize;
-    //width: 10em;
-    align: right;
-  });
-
-  widget(dummy, { width: 0.5em; });
-
-  widget(image, {
-    //debug: true;
-    width: 1.4em * $self.itemHeight;
-    color: $self.playcount < 1;
-    alpha: !($self.playcount < 1);
-    source: "img/ic_check_48px.svg";
-  });
-
 });
