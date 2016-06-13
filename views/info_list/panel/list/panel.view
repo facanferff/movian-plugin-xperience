@@ -2,7 +2,7 @@
 
 widget(container_z, {
 
-  width: $ui.width * 0.6;
+  width: $ui.width * $core.xperience.infoList.itemList.width;
 
   widget(backdrop, {
     source: "img/panel.png";

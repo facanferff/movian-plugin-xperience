@@ -34,6 +34,12 @@ settings.globalSettings(PREFIX, plugin_info.title, plugin.getLogoPath(),
 
 settings.createDivider("Info List");
 
+settings.createInfo("info.infoList.itemList.width", plugin.getLogoPath(),
+    "A bigger value will mean that the item list will use more space horizontally.");
+settings.createInt("infoList.itemList.width", "Item list's screen width proportion", 55, 30, 70, 1, "%", function(v) {
+    prop.global.xperience.infoList.itemList.width = v / 100;
+});
+
 settings.createInfo("info.infoList.itemHeight", plugin.getLogoPath(),
     "A bigger item height means less items on screen.");
 settings.createInt("infoList.itemHeight", "Item height", 100, 50, 200, 10, "%", function(v) {

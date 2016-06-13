@@ -1,6 +1,6 @@
 widget(container_y, {
   height: $ui.height;
-  width: $ui.width * 0.35;
+  filterConstraintX: true;
 
   widget(loader, {
     time: 0.1;
