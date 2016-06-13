@@ -75,9 +75,9 @@ widget(container_y, {
 
       widget(container_x, {
         hidden: $clone.focused.metadata.viewCount < 1;
-        width: 6em;
+        filterConstraintX: true;
         spacing: 0.5em;
-        align: left;
+        align: center;
         //debug: true;
 
         icon({
@@ -92,7 +92,7 @@ widget(container_y, {
 
       widget(container_x, {
         hidden: $clone.focused.metadata.likeCount < 1;
-        width: 6em;
+        filterConstraintX: true;
         spacing: 0.5em;
         align: center;
         //debug: true;
@@ -109,9 +109,9 @@ widget(container_y, {
 
       widget(container_x, {
         hidden: $clone.focused.metadata.dislikeCount < 1;
-        width: 6em;
+        filterConstraintX: true;
         spacing: 0.5em;
-        align: right;
+        align: center;
         //debug: true;
 
         icon({
