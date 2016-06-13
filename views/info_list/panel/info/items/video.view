@@ -3,7 +3,10 @@
 widget(container_y, {
 
   widget(container_z, {
-    height: 15em;
+    //height: 15em * (1 - $core.xperience.infoList.itemList.width);
+    //height: 17em;
+    //maxHeight: 17em;
+    filterConstraintY: true;
 
     widget(quad, {
       //hidden: !$clone.focused.primaryColor;
@@ -12,12 +15,13 @@ widget(container_y, {
 
     widget(image, {
        // TODO add default image
-      source: $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover");
+       source: $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover");
+       align: top;
     });
   });
 
   widget(container_z, {
-    filterConstraintY: true;
+    height: 8em;
 
     widget(quad, {
       color: $clone.focused.primaryColor;
@@ -27,8 +31,11 @@ widget(container_y, {
 
       // Details
       widget(list_y, {
-        id: "details";
-        margin: 1em;
+        id: "details:" + $clone.focused.url;
+        navWrap: true;
+        chaseFocus: true;
+
+        margin: 0.5em;
         spacing: 0.3em;
 
         // Year
@@ -48,7 +55,7 @@ widget(container_y, {
       // Scrollbar
       widget(container_x, {
         align: right;
-        LIST_Y_SLIDER("details", 0.1);
+        LIST_Y_SLIDER("details:" + $clone.focused.url, 0.1);
       });
 
     });
@@ -90,7 +97,7 @@ widget(container_y, {
         hidden: $clone.focused.metadata.likeCount < 1;
         width: 6em;
         spacing: 0.5em;
-        align: left;
+        align: center;
         //debug: true;
 
         icon({
@@ -107,7 +114,7 @@ widget(container_y, {
         hidden: $clone.focused.metadata.dislikeCount < 1;
         width: 6em;
         spacing: 0.5em;
-        align: left;
+        align: right;
         //debug: true;
 
         icon({
