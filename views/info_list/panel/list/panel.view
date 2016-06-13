@@ -1,14 +1,13 @@
 #import "common.view"
 
 widget(container_z, {
-
-  width: $ui.width * $core.xperience.infoList.itemList.width;
+  filterConstraintX: true;
 
   widget(backdrop, {
     source: "img/panel.png";
 
     widget(list_y, {
-      id: "list";
+      id: "scrollable";
       chaseFocus: true;
       $clone.focused <- focusedChild();
 
@@ -43,6 +42,6 @@ widget(container_z, {
   /*widget(container_x, {
     align: right;
     padding: [0, 0, 0, 0];
-    LIST_Y_SLIDER("list", 0.7, true);
+    LIST_Y_SLIDER("scrollable", 0.7, true);
   });*/
 });

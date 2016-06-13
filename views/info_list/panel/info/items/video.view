@@ -3,9 +3,6 @@
 widget(container_y, {
 
   widget(container_z, {
-    //height: 15em * (1 - $core.xperience.infoList.itemList.width);
-    //height: 17em;
-    //maxHeight: 17em;
     filterConstraintY: true;
 
     widget(quad, {
@@ -21,7 +18,7 @@ widget(container_y, {
   });
 
   widget(container_z, {
-    height: 8em;
+    height: 7em;
 
     widget(quad, {
       color: $clone.focused.primaryColor;

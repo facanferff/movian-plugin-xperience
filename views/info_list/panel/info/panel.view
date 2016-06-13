@@ -1,6 +1,6 @@
 widget(container_y, {
-  height: $ui.height;
-  filterConstraintX: true;
+  hidden: !($ui.aspect > 1.2);
+  width: $ui.width * (1 - $core.xperience.infoList.itemList.width);
 
   widget(loader, {
     time: 0.1;
