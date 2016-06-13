@@ -1,0 +1,46 @@
+#include "common.view"
+
+widget(container_y, {
+  focusable: true;
+  focusOnClick: true;
+  onEvent(activate, navOpen($self.url, void, void, $parent.model));
+  onEvent(itemMenu, eventWithProp(defaultInfo, $self));
+
+  widget(backdrop, {
+    source: "img/button_fo.png";
+    alphaSelf: isFocused() + isHovered() * 0.6;
+
+    .width = $ui.width;
+
+    widget(container_x, {
+      widget(dummy, {
+        width: 0.5em;
+      });
+
+      widget(container_x, {
+        padding: [0, 0.3em, 0, 0.3em];
+
+        widget(icon, {
+          color: select(isFocused(), 1.0, 0.6);
+          source: $self.url;
+          width: 2em;
+        });
+      });
+
+      widget(container_y, {
+        padding: [0.9em, 0.8em, 0, 0.8em];
+        widget(label, {
+          TextStyleItem();
+          color: select(isFocused(), 1.0, 0.6);
+          caption: $self.metadata.title;
+          ellipsize: true;
+          sizeScale: 1.3;
+        });
+      });
+
+      widget(dummy, {
+        width: 0.5em;
+      });
+    });
+  });
+});

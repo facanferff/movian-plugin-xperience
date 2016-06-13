@@ -1,0 +1,35 @@
+#define CAPTION(TITLE, TEXT, SIZE = 1.0) {
+  widget(container_x, {
+    hidden: !TEXT;
+
+    widget(label, {
+      caption: _(TITLE) + " ";
+      sizeScale: SIZE;
+      color: "#69B3E2";
+    });
+
+    widget(label, {
+      caption: TEXT;
+      sizeScale: SIZE;
+      maxlines: 2;
+    });
+
+  });
+}
+
+#define LIST_Y_SLIDER(ID, FOCUSABLE=false, NAVFOCUSABLE = true, IMAGE="img/scrollbar.png") {
+  widget(slider_y, {
+    bind(ID);
+    .width = 10;
+    .focusable = FOCUSABLE;
+    .navFocusable = NAVFOCUSABLE;
+    .alpha = iir(canScroll(), 16);
+
+    widget(backdrop, {
+      .alphaSelf = 1;//iir(0.3 + 0.7 * (isFocused() || isPressed()), 8);
+      .color = 0.55 + 0.45 * (isFocused() || isPressed() || isHovered());
+      .source = IMAGE;
+      .border =  [2, 4, 2, 4];
+    });
+  });
+}

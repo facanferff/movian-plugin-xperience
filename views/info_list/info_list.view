@@ -1,0 +1,18 @@
+widget(container_y, {
+
+	#include "header.view";
+
+	widget(container_x, {
+		margin: [1.5em, 1.5em, 1.5em, 2em];
+
+		// list panel
+		#include "panel/list/panel.view";
+
+		widget(dummy, { width: 0.5em; });
+
+		// info panel
+		#include "panel/info/panel.view";
+	});
+
+	//$nav.currentpage.model.metadata.background = $clone.focused.metadata.backdrop ?? $self.model.metadata.background/* ?? "img/background.png"*/;
+});

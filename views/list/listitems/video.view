@@ -1,0 +1,59 @@
+#include "common.view"
+
+widget(container_y, {
+  focusable: true;
+  focusOnClick: true;
+  onEvent(activate, navOpen($self.url, void, void, $parent.model));
+  onEvent(itemMenu, eventWithProp(videoInfo, $self));
+
+  widget(backdrop, {
+    source: "img/button_fo.png";
+    alphaSelf: isFocused() + isHovered() * 0.6;
+
+    .width = $ui.width;
+
+    widget(container_z, {
+      widget(container_x, {
+        padding: [0, 0.8em, 0, 0.8em];
+
+        widget(dummy, {
+          width: 0.5em;
+        });
+
+        widget(container_x, {
+          padding: [0, -0.5em, 0, -0.5em];
+
+          widget(icon, {
+            color: select(isFocused(), 1.0, 0.6);
+            source: $self.metadata.icon ?? "dataroot://resources/svg/Movie.svg";
+            width: 2em;
+          });
+        });
+
+        widget(container_y, {
+          padding: [0.9em, 0, 0, 0];
+          widget(label, {
+            TextStyleItem();
+            color: select(isFocused(), 1.0, 0.6);
+            caption: $self.metadata.title;
+            ellipsize: true;
+            sizeScale: 1.3;
+          });
+        });
+
+        widget(dummy, {
+          width: 2.5em;
+        });
+      });
+
+      widget(image, {
+        source: translate($self.playcount, "../img/overlays/OverlayWatched.png",
+          0, "../img/overlays/OverlayUnwatched.png",
+          void, "../img/overlays/OverlayUnwatched.png",
+          null, "../img/overlays/OverlayUnwatched.png");
+        align: right;
+        padding: 1;
+      });
+    });
+  });
+});

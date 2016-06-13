@@ -1,0 +1,16 @@
+#define LIST_Y_SLIDER(ID, FOCUSABLE=false, NAVFOCUSABLE = true, IMAGE="img/scrollbar.png") {
+  widget(slider_y, {
+    bind(ID);
+    .width = 20;
+    .focusable = FOCUSABLE;
+    .navFocusable = NAVFOCUSABLE;
+    .alpha = iir(canScroll(), 16);
+
+    widget(backdrop, {
+      .alphaSelf = 1;//iir(0.3 + 0.7 * (isFocused() || isPressed()), 8);
+      .color = 0.55 + 0.45 * (isFocused() || isPressed() || isHovered());
+      .source = IMAGE;
+      .border =  [2, 4, 2, 4];
+    });
+  });
+}

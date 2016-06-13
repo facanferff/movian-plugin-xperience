@@ -1,0 +1,9 @@
+widget(container_y, {
+  hidden: !($clone.focused.url);
+  padding: [3em, 1em, 2em, 1em];
+
+  widget(image, {
+    source: $clone.focused.url;
+    align: center;
+  });
+});

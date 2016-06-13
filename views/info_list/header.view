@@ -1,0 +1,41 @@
+widget(container_z, {
+    height: 3.5em;
+    zoffset: 10;
+    widget(quad, {
+      color: 0;
+      alpha: 0.2;
+    });
+
+    hbox({
+      padding: [4em, 0.5em];
+      image({
+        align: left;
+        source: $self.model.metadata.icon;
+      });
+    });
+
+    widget(label, {
+      padding: [3em, 0];
+      align: center;
+      caption: $self.model.metadata.title;
+      size: 1.5em;
+    });
+
+    widget(container_x, {
+      hidden: !$nav.canGoBack;
+      widget(container_y, {
+        align: center;
+        width: 4em;
+        clickable: $ui.pointerVisible || ($ui.touch && ENABLED);
+        //alpha: iir($ui.pointerVisible || ($ui.touch && ENABLED), 4);
+        onEvent(activate, event("back"));
+        navFocusable: false;
+        widget(icon, {
+          color: 0.5 + iir(isHovered(), 4);
+          size: 2em;
+          source: "img/ic_chevron_left_48px.svg";
+        });
+      });
+      space(1);
+    });
+  });

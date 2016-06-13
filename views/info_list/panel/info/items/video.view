@@ -1,0 +1,73 @@
+#import "common.view"
+
+widget(container_y, {
+
+  widget(container_z, {
+    height: 15em;
+
+    widget(quad, {
+      //hidden: !$clone.focused.primaryColor;
+      color: $clone.focused.primaryColor;
+    });
+
+    widget(image, {
+       // TODO add default image
+      source: $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover");
+    });
+  });
+
+  widget(container_z, {
+    filterConstraintY: true;
+
+    widget(quad, {
+      color: $clone.focused.primaryColor;
+    });
+
+    widget(container_z, {
+
+      // Details
+      widget(list_y, {
+        id: "details";
+        margin: 1em;
+        spacing: 0.3em;
+
+        // Year
+        CAPTION("Year:", $clone.focused.metadata.year);
+
+        // Genre
+        CAPTION("Genre:", $clone.focused.metadata.genre);
+
+        // Description
+        widget(label, {
+          caption: $clone.focused.metadata.description ?? "No description available";
+          sizeScale: 0.9;
+          maxlines: 50;
+        });
+      });
+
+      // Scrollbar
+      widget(container_x, {
+        align: right;
+        LIST_Y_SLIDER("details", 0.1);
+      });
+
+    });
+  });
+
+  // Seen
+  widget(container_z, {
+    height: 1.7em;
+    hidden: $clone.focused.playcount < 1;
+
+    widget(quad, {
+      color: $clone.focused.primaryColor * 1.9;
+    });
+
+    widget(label, {
+      margin: [1em, 0, 2em, 0];
+      align: left;
+      caption: _("Last seen: ") + timeAgo($core.clock.unixtime - $clone.focused.lastplayed);
+    });
+  });
+
+});

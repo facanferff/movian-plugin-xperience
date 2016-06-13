@@ -1,0 +1,13 @@
+widget(container_z, {
+  //widget(dummy, { height: 1em * $self.itemHeight; });
+
+  widget(label, {
+    //debug: true;
+    caption: $self.metadata.title;
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+    sizeScale: 1.0 * $self.textSize;
+    width: $ui.width;
+    align: center;
+    align: bottom;
+  });
+});

@@ -1,0 +1,73 @@
+#include "common.view"
+
+widget(container_y, {
+  focusable: true;
+  focusOnClick: true;
+  onEvent(activate, playTrackFromSource($self, $parent.model));
+  onEvent(itemMenu, eventWithProp(defaultInfo, $self));
+
+  widget(backdrop, {
+    source: "img/button_fo.png";
+    alphaSelf: isFocused() + isHovered() * 0.6;
+
+    .width = $ui.width;
+
+    widget(container_x, {
+      padding: [0, 0.8em, 0, 0.8em];
+
+      widget(dummy, {
+        width: 0.5em;
+      });
+
+      widget(container_x, {
+        padding: [0, -0.5em, 0, -0.5em];
+
+        widget(icon, {
+          $self.metadata.icon = translate(
+            $self.media.playstatus, "dataroot://resources/svg/Music.svg",
+            "play", "dataroot://resources/svg/Play.svg",
+            "pause", "dataroot://resources/svg/Pause.svg");
+
+          color: select(isFocused(), 1.0, 0.6);
+          source: $self.metadata.icon;
+          width: 2em;
+        });
+      });
+
+      // TODO Handle properly no artist/duration
+      widget(container_x, {
+        padding: [0.9em, 0, 0.9em, 0];
+        widget(label, {
+          width: 15em;
+          TextStyleItem();
+          color: select(isFocused(), 1.0, 0.6);
+          caption: $self.metadata.title;
+          ellipsize: true;
+          sizeScale: 1.3;
+        });
+
+        widget(label, {
+          hidden: !($self.metadata.artist);
+          width: 10em;
+          TextStyleItem();
+          align: center;
+          color: select(isFocused(), 1.0, 0.6);
+          caption: $self.metadata.artist;
+          ellipsize: true;
+          sizeScale: 1.3;
+        });
+
+        widget(label, {
+          hidden: !($self.metadata.duration);
+          width: 4em;
+          TextStyleItem();
+          align: right;
+          color: select(isFocused(), 1.0, 0.6);
+          caption: value2duration($self.metadata.duration);
+          ellipsize: true;
+          sizeScale: 1.3;
+        });
+      });
+    });
+  });
+});

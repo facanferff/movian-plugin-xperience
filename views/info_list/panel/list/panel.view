@@ -1,0 +1,48 @@
+#import "common.view"
+
+widget(container_z, {
+
+  width: $ui.width * 0.6;
+
+  widget(backdrop, {
+    source: "img/panel.png";
+
+    widget(list_y, {
+      id: "list";
+      chaseFocus: true;
+      $clone.focused <- focusedChild();
+
+      cloner($self.model.nodes, container_z, {
+        height: translate($self.type, 3em * $core.xperience.infoList.itemHeight,
+                       "search", 3.0em);
+
+        $self.itemHeight = $core.xperience.infoList.itemHeight;
+        $self.textSize = $core.xperience.infoList.textSize;
+
+        widget(backdrop, {
+          source: "img/backdrop.png";
+          color: select($self.primaryColor, $self.primaryColor * 2, "#777777");
+          alphaSelf: (isFocused() || isHovered()) * 1.0;
+
+          widget(loader, {
+            margin: [0.8em, 0.4em, 1.1em, 0.4em];
+            //debug: true;
+            time: 0.1;
+            effect: blend;
+            noInitialTransform: true;
+            alt: "items/default.view";
+            source: "items/" + $self.type + ".view";
+          });
+        });
+      });
+    });
+  });
+
+
+  // Scrollbar
+  /*widget(container_x, {
+    align: right;
+    padding: [0, 0, 0, 0];
+    LIST_Y_SLIDER("list", 0.7, true);
+  });*/
+});

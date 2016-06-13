@@ -1,0 +1,34 @@
+widget(container_x, {
+  focusable: 0.6;
+  focusOnClick: true;
+  onEvent(activate, navOpen($self.url, void, void, $parent.model));
+  onEvent(itemMenu, eventWithProp(defaultInfo, $self));
+
+  widget(image, {
+    //debug: true;
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+    source: $self.metadata.icon ?? (
+        "img/" +
+        select($self.subtype,
+               "ic_" + $self.subtype + "_48px",
+               translate($self.type,  "",
+            		         "directory", "ic_folder_48px",
+	                       "movian",    "movian")) + ".svg");
+    width: 4em * $self.itemHeight;
+    $self.primaryColor = RGBToString(primaryColor() * 0.3);
+  });
+
+  widget(dummy, {
+    //debug: true;
+    width: 1em;
+  });
+
+  widget(label, {
+    //debug: true;
+    caption: $self.metadata.title;
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+    sizeScale: 1.0 * $self.textSize;
+    //width: $ui.width;
+    //filterConstraintX: true;
+  });
+});

@@ -1,0 +1,23 @@
+widget(container_y, {
+
+  widget(container_z, {
+    widget(quad, {
+      hidden: !$clone.focused.primaryColor;
+      color: $clone.focused.primaryColor;
+    });
+
+    widget(image, {
+       // TODO add default image
+      source: $clone.focused.metadata.icon ?? (
+          "img/" +
+          select($clone.focused.subtype,
+                 "ic_" + $clone.focused.subtype + "_48px",
+                 translate($clone.focused.type,  "",
+              		         "directory", "ic_folder_48px",
+                           "search", "ic_search_48px",
+  	                       "movian",    "movian")) + ".svg");
+      $clone.focused.primaryColor = RGBToString(primaryColor() * 0.3);
+    });
+  });
+
+});

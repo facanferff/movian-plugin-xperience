@@ -1,0 +1,9 @@
+widget(container_y, {
+  hidden: !($clone.focused.metadata.icon);
+  padding: [3em, 1em, 2em, 1em];
+
+  widget(image, {
+    source: $clone.focused.metadata.icon;
+    align: center;
+  });
+});

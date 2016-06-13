@@ -1,0 +1,16 @@
+widget(container_y, {
+
+  widget(container_z, {
+    widget(quad, {
+      hidden: !$clone.focused.primaryColor;
+      color: $clone.focused.primaryColor;
+    });
+
+    widget(image, {
+       // TODO add default image
+      source: $clone.focused.url;
+      $clone.focused.primaryColor = RGBToString(primaryColor() * 0.3);
+    });
+  });
+
+});

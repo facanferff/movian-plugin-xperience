@@ -1,0 +1,61 @@
+widget(container_x, {
+  focusable: 0.6;
+  focusOnClick: true;
+  onEvent(activate, playTrackFromSource($self, $parent.model));
+  onEvent(itemMenu, eventWithProp(defaultInfo, $self));
+
+  widget(container_x, {
+    width: 7em;
+
+    widget(container_z, {
+      widget(throbber, {
+        alpha: iir($self.media.loading, 8);
+      });
+
+      widget(icon, {
+        size: 1.5em;
+        source: translate($self.media.playstatus, "",
+                          "play", "skin://icons/ic_play_arrow_48px.svg",
+                          "pause", "skin://icons/ic_pause_48px.svg");
+        hidden: ($self.media.playstatus != "pause" &&
+                 $self.media.playstatus != "play") || $self.media.loading;
+      });
+    });
+  });
+
+  widget(image, {
+    hidden: isVoid($self.metadata.icon);
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+    source: $self.metadata.icon;
+    width: 4em * $self.itemHeight;
+    $self.primaryColor = RGBToString(primaryColor() * 0.3);
+    //debug: true;
+  });
+
+  widget(dummy, { width: 1em; });
+
+  widget(label, {
+    //debug: true;
+    caption: $self.metadata.title ?? "No title available";
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+    sizeScale: 1.0 * $self.textSize;
+    width: $ui.width;
+  });
+
+  widget(label, {
+    //debug: true;
+    width: 30em;
+    caption: $self.metadata.artist;
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+    sizeScale: 1.0 * $self.textSize;
+  });
+
+  widget(label, {
+    //debug: true;
+    caption: value2duration($self.metadata.duration);
+    color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+    sizeScale: 1.0 * $self.textSize;
+    width: 5em;
+    align: right;
+  });
+});
