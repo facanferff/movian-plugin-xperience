@@ -8,12 +8,22 @@ widget(container_z, {
     //debug: true;
     width: $ui.width;
 
-    widget(image, {
+    widget(container_z, {
       //debug: true;
       width: 2.5em * $self.itemHeight;
-      color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
-      source: $self.metadata.icon ?? ($self.url + "#cover");
-      $self.primaryColor = RGBToString(primaryColor() * 0.3);
+
+      widget(image, {
+        hidden: !($self.showDefaultImage);
+        source: "img/ic_movie_48px.svg";
+        color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+      });
+
+      widget(image, {
+        source: $self.metadata.icon ?? ($self.url + "#cover");
+        color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+        $self.primaryColor = select(isLoaded(), RGBToString(primaryColor() * 0.3), "#444444");
+        $self.showDefaultImage = isError();
+      });
     });
 
     widget(dummy, {
