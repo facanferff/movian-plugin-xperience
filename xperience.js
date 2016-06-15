@@ -46,11 +46,17 @@ settings.createInt("infoList.itemHeight", "Item height", 100, 50, 200, 10, "%", 
     prop.global.xperience.infoList.itemHeight = v / 100;
 });
 
-settings.createInfo("info.infoList.contentSize", null,
+settings.createInfo("info.infoList.textSize", null,
     "A bigger item's text size means bigger text.\n" +
     "Note that a bigger item's text size requires a bigger item height.");
 settings.createInt("infoList.textSize", "Item's text size", 100, 50, 200, 10, "%", function(v) {
     prop.global.xperience.infoList.textSize = v / 100;
+});
+
+settings.createInfo("info.infoList.info.textSize", null,
+    "A bigger item's info text size means bigger text of the information shown on the right.");
+settings.createInt("infoList.info.textSize", "Item's info text size", 100, 50, 150, 5, "%", function(v) {
+    prop.global.xperience.infoList.info.textSize = v / 100;
 });
 
 prop.global.xperience.disablePrimaryColor = Core.currentVersionInt < 50000196;

@@ -42,7 +42,7 @@ widget(container_y, {
           // Description
           widget(label, {
             caption: $clone.focused.metadata.description ?? "No description available";
-            sizeScale: 0.9;
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
             maxlines: 50;
           });
         });
@@ -58,7 +58,7 @@ widget(container_y, {
 
     // View/Like/Dislike count
     widget(container_z, {
-      height: 1.7em;
+      height: 1.5em * $global.xperience.infoList.info.textSize;
       hidden: $clone.focused.metadata.viewCount1 < 1 &&
               $clone.focused.metadata.likeCount < 1 &&
               $clone.focused.metadata.dislikeCount < 1;
@@ -85,6 +85,7 @@ widget(container_y, {
 
           widget(label, {
             caption: value2quantity($clone.focused.metadata.viewCount);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
           });
         });
 
@@ -102,6 +103,7 @@ widget(container_y, {
 
           widget(label, {
             caption: value2quantity($clone.focused.metadata.likeCount);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
           });
         });
 
@@ -119,6 +121,7 @@ widget(container_y, {
 
           widget(label, {
             caption: value2quantity($clone.focused.metadata.dislikeCount);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
           });
         });
       });
@@ -126,7 +129,7 @@ widget(container_y, {
 
     // Year
     widget(container_z, {
-      height: 1.7em;
+      height: 1.5em * $global.xperience.infoList.info.textSize;
       hidden: isVoid($clone.focused.metadata.year);
 
       widget(quad, {
@@ -136,13 +139,14 @@ widget(container_y, {
       widget(label, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
-        caption: fmt("%s %s", _("Year:"), $clone.focused.metadata.year);
+        caption: fmt("%s: %s", _("Year"), $clone.focused.metadata.year);
+        sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
       });
     });
 
-    // Genre
+    // Genres
     widget(container_z, {
-      height: 1.7em;
+      height: 1.5em * $global.xperience.infoList.info.textSize;
       hidden: isVoid($clone.focused.metadata.genre);
 
       widget(quad, {
@@ -153,12 +157,13 @@ widget(container_y, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
         caption: fmt("%s: %s", _("Genres"), $clone.focused.metadata.genre);
+        sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
       });
     });
 
     // Seen
     widget(container_z, {
-      height: 1.7em;
+      height: 1.5em * $global.xperience.infoList.info.textSize;
       hidden: $clone.focused.playcount < 1;
 
       widget(quad, {
@@ -169,12 +174,14 @@ widget(container_y, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
         caption: fmt("%s: %s", _("Last seen"), timeAgo($core.clock.unixtime - $clone.focused.lastplayed));
+        sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
       });
     });
 
     // Metadata from
     widget(container_z, {
-      height: 1.7em;
+      //debug: true;
+      height: 1.5em * $global.xperience.infoList.info.textSize;
       hidden: isVoid($clone.focused.metadata.source);
 
       widget(quad, {
@@ -185,6 +192,7 @@ widget(container_y, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
         caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
+        sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
       });
     });
   });
