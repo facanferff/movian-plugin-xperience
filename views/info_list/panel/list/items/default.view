@@ -1,6 +1,7 @@
 widget(container_x, {
   focusable: 0.6;
   focusOnClick: true;
+  width: $ui.width;
   onEvent(activate, navOpen($self.url, void, void, $parent.model));
   onEvent(itemMenu, eventWithProp(defaultInfo, $self));
 
