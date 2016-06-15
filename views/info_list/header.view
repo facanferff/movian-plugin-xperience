@@ -6,17 +6,16 @@ widget(container_z, {
       alpha: 0.3;
     });
 
-    //widget(hbox, {
-    //  padding: [4em, 0.5em];
+    widget(hbox, {
+      padding: [4em, 0.5em];
       widget(image, {
         //debug: true;
-        padding: [4em, 0.5em];
         align: left;
         source: $self.model.metadata.icon;
         $view.headerPrimaryColor =  select($core.xperience.disablePrimaryColor,
                                     "#777777", RGBToString(primaryColor() * 0.3));
       });
-    //});
+    });
 
     widget(label, {
       //debug: true;
@@ -33,7 +32,8 @@ widget(container_z, {
         width: 4em;
         clickable: $ui.pointerVisible || ($ui.touch && true);
         alpha: iir($ui.pointerVisible || ($ui.touch && true), 4);
-        onEvent(activate, event("back"));
+        // TODO revert this
+        //onEvent(activate, event("back"));
         navFocusable: false;
         widget(icon, {
           color: 0.5 + iir(isHovered(), 4);

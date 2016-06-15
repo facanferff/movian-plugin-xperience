@@ -13,6 +13,8 @@ widget(container_y, {
     widget(image, {
        // TODO add default image
        source: $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover");
+       saturation: $view.loading;
+       alpha: 1 - $view.loading * 0.5;
        align: top;
     });
   });
