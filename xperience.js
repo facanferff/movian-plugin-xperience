@@ -17,9 +17,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 This program is also available under a commercial proprietary license.
 */
 
-var prop = require('movian/prop');
-var service = require('movian/service');
-var settings = require('movian/settings');
+var prop = require('showtime/prop');
+var service = require('showtime/service');
+var settings = require('showtime/settings');
 
 var log = require('./src/log');
 var plugin = require('./src/plugin');
@@ -34,21 +34,23 @@ settings.globalSettings(PREFIX, plugin_info.title, plugin.getLogoPath(),
 
 settings.createDivider("Info List");
 
-settings.createInfo("info.infoList.itemList.width", plugin.getLogoPath(),
+settings.createInfo("info.infoList.itemList.width", null,
     "A bigger value will mean that the item list will use more space horizontally.");
 settings.createInt("infoList.itemList.width", "Item list's screen width proportion", 55, 30, 70, 1, "%", function(v) {
     prop.global.xperience.infoList.itemList.width = v / 100;
 });
 
-settings.createInfo("info.infoList.itemHeight", plugin.getLogoPath(),
+settings.createInfo("info.infoList.itemHeight", null,
     "A bigger item height means less items on screen.");
 settings.createInt("infoList.itemHeight", "Item height", 100, 50, 200, 10, "%", function(v) {
     prop.global.xperience.infoList.itemHeight = v / 100;
 });
 
-settings.createInfo("info.infoList.contentSize", plugin.getLogoPath(),
+settings.createInfo("info.infoList.contentSize", null,
     "A bigger item's text size means bigger text.\n" +
     "Note that a bigger item's text size requires a bigger item height.");
 settings.createInt("infoList.textSize", "Item's text size", 100, 50, 200, 10, "%", function(v) {
     prop.global.xperience.infoList.textSize = v / 100;
 });
+
+prop.global.xperience.disablePrimaryColor = Core.currentVersionInt < 50000196;

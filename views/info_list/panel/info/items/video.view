@@ -78,12 +78,12 @@ widget(container_y, {
           align: center;
           //debug: true;
 
-          icon({
+          widget(icon, {
             size: 0.8em;
             source: "img/ic_play_arrow_48px.svg";
           });
 
-          label({
+          widget(label, {
             caption: value2quantity($clone.focused.metadata.viewCount);
           });
         });
@@ -95,12 +95,12 @@ widget(container_y, {
           align: center;
           //debug: true;
 
-          icon({
+          widget(icon, {
             size: 0.8em;
             source: "img/ic_thumb_up_48px.svg";
           });
 
-          label({
+          widget(label, {
             caption: value2quantity($clone.focused.metadata.likeCount);
           });
         });
@@ -112,12 +112,12 @@ widget(container_y, {
           align: center;
           //debug: true;
 
-          icon({
+          widget(icon, {
             size: 0.8em;
             source: "img/ic_thumb_down_48px.svg";
           });
 
-          label({
+          widget(label, {
             caption: value2quantity($clone.focused.metadata.dislikeCount);
           });
         });

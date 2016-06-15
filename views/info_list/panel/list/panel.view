@@ -12,25 +12,28 @@ widget(container_z, {
       $clone.focused <- focusedChild();
 
       cloner($self.model.nodes, container_z, {
-        height: translate($self.type, 3em * $core.xperience.infoList.itemHeight,
+        height: translate($self.type, 3em * $global.xperience.infoList.itemHeight,
                        "search", 3.0em);
 
-        $self.itemHeight = $core.xperience.infoList.itemHeight;
-        $self.textSize = $core.xperience.infoList.textSize;
+        $self.itemHeight = $global.xperience.infoList.itemHeight;
+        $self.textSize = $global.xperience.infoList.textSize;
 
         widget(backdrop, {
           source: "img/backdrop.png";
           color: select($self.primaryColor, $self.primaryColor * 2, "#777777");
           alphaSelf: (isFocused() || isHovered()) * 1.0;
 
-          widget(loader, {
+          widget(container_x, {
             margin: [0.8em, 0.4em, 1.1em, 0.4em];
-            //debug: true;
-            time: 0.1;
-            effect: blend;
-            noInitialTransform: true;
-            alt: "items/default.view";
-            source: "items/" + $self.type + ".view";
+            
+            widget(loader, {
+              //debug: true;
+              time: 0.1;
+              effect: blend;
+              noInitialTransform: true;
+              alt: "items/default.view";
+              source: "items/" + $self.type + ".view";
+            });
           });
         });
       });

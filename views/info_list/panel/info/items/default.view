@@ -25,7 +25,6 @@ widget(container_y, {
               		         "playlist",  "ic_list_48px",
                            "plugin",    "plugin",
   	                       "movian",    "movian")) + ".svg");
-      $clone.focused.primaryColor = RGBToString(primaryColor() * 0.3);
     });
   });
 

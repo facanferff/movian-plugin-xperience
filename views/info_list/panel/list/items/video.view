@@ -6,6 +6,7 @@ widget(container_z, {
 
   widget(container_x, {
     //debug: true;
+    width: $ui.width;
 
     widget(image, {
       //debug: true;
@@ -31,6 +32,7 @@ widget(container_z, {
     widget(dummy, { width: 0.5em; });
 
     widget(container_x, {
+      //debug: true;
       hidden: isVoid($self.metadata.year);
 
       widget(label, {
@@ -44,6 +46,7 @@ widget(container_z, {
     });
 
     widget(container_x, {
+      //debug: true;
       hidden: !($self.restartpos > 0 || $self.metadata.duration > 0);
 
       widget(label, {
@@ -74,6 +77,7 @@ widget(container_z, {
       color: $self.playcount < 1;
       alpha: !($self.playcount < 1);
       source: "img/ic_check_48px.svg";
+      align: right;
     });
 
   });

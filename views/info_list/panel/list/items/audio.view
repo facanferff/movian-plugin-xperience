@@ -1,6 +1,7 @@
 widget(container_x, {
   focusable: 0.6;
   focusOnClick: true;
+  width: $ui.width;
   onEvent(activate, playTrackFromSource($self, $parent.model));
   onEvent(itemMenu, eventWithProp(defaultInfo, $self));
 
@@ -13,9 +14,9 @@ widget(container_x, {
         hidden: isVoid($self.metadata.icon);
         color: select(isFocused() || isHovered() || isPressed(), 0.9, 0.5);
         source: $self.metadata.icon;
-        $self.primaryColor = RGBToString(primaryColor() * 0.3);
         width: 2.5em * $self.itemHeight;
         //debug: true;
+        $self.primaryColor = RGBToString(primaryColor() * 0.3);
       });
 
       widget(container_z, {

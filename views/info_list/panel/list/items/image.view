@@ -11,6 +11,7 @@ widget(container_x, {
     width: 2.5em * $self.itemHeight;
     color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
     source: $self.url;
+    $self.primaryColor = RGBToString(primaryColor() * 0.3);
   });
 
   widget(dummy, { width: 1em; });

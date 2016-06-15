@@ -6,16 +6,20 @@ widget(container_z, {
       alpha: 0.3;
     });
 
-    hbox({
-      padding: [4em, 0.5em];
-      image({
+    //widget(hbox, {
+    //  padding: [4em, 0.5em];
+      widget(image, {
+        //debug: true;
+        padding: [4em, 0.5em];
         align: left;
         source: $self.model.metadata.icon;
-        $view.headerPrimaryColor = RGBToString(primaryColor() * 0.3);
+        $view.headerPrimaryColor =  select($core.xperience.disablePrimaryColor,
+                                    "#777777", RGBToString(primaryColor() * 0.3));
       });
-    });
+    //});
 
     widget(label, {
+      //debug: true;
       padding: [3em, 0];
       align: center;
       caption: $self.model.metadata.title;

@@ -12,15 +12,16 @@ widget(container_x, {
       padding: [0.5em, 0];
       spacing: 0.5em;
       widget(icon, {
-        fhpSpill: true;
+        //fhpSpill: true;
         size: 1.2em;
         source: "img/ic_search_48px.svg";
         alpha: 0.4 + isFocused();
       });
 
-      zbox({
+      widget(container_z, {
         filterConstraintX: true;
-        label({
+
+        widget(label, {
           hidden: select($view.searchQuery, true, false);
           caption: $self.metadata.title;
           size: 1.0em * $self.textSize;

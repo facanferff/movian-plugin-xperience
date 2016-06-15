@@ -3,7 +3,8 @@ widget(container_y, {
 	#include "header.view";
 
 	widget(container_x, {
-		margin: [1em, 1em, 1em, 1em];
+		//margin: [1em, 1em, 1em, 1em];
+		padding: [1em, 1em, 1em, 1em];
 
 		// list panel
 		#include "panel/list/panel.view";
