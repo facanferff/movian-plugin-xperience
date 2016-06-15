@@ -35,12 +35,6 @@ widget(container_y, {
         margin: 0.5em;
         spacing: 0.3em;
 
-        // Year
-        CAPTION("Year:", $clone.focused.metadata.year);
-
-        // Genre
-        CAPTION("Genre:", $clone.focused.metadata.genre);
-
         // Description
         widget(label, {
           caption: $clone.focused.metadata.description ?? "No description available";
@@ -126,6 +120,38 @@ widget(container_y, {
     });
   });
 
+  // Year
+  widget(container_z, {
+    height: 1.7em;
+    hidden: isVoid($clone.focused.metadata.year);
+
+    widget(quad, {
+      color: $clone.focused.primaryColor * 1.9;
+    });
+
+    widget(label, {
+      margin: [0.5em, 0, 0.5em, 0];
+      align: left;
+      caption: fmt("%s %s", _("Year:"), $clone.focused.metadata.year);
+    });
+  });
+
+  // Genre
+  widget(container_z, {
+    height: 1.7em;
+    hidden: isVoid($clone.focused.metadata.genre);
+
+    widget(quad, {
+      color: $clone.focused.primaryColor * 1.9;
+    });
+
+    widget(label, {
+      margin: [0.5em, 0, 0.5em, 0];
+      align: left;
+      caption: fmt("%s %s", _("Genre:"), $clone.focused.metadata.genre);
+    });
+  });
+
   // Seen
   widget(container_z, {
     height: 1.7em;
@@ -136,9 +162,25 @@ widget(container_y, {
     });
 
     widget(label, {
-      margin: [1em, 0, 2em, 0];
+      margin: [0.5em, 0, 0.5em, 0];
       align: left;
-      caption: _("Last seen: ") + timeAgo($core.clock.unixtime - $clone.focused.lastplayed);
+      caption: fmt("%s: %s", _("Last seen"), timeAgo($core.clock.unixtime - $clone.focused.lastplayed));
+    });
+  });
+
+  // Metadata from
+  widget(container_z, {
+    height: 1.7em;
+    hidden: isVoid($clone.focused.metadata.source);
+
+    widget(quad, {
+      color: $clone.focused.primaryColor * 1.9;
+    });
+
+    widget(label, {
+      margin: [0.5em, 0, 0.5em, 0];
+      align: left;
+      caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
     });
   });
 

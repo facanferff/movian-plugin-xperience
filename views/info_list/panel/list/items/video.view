@@ -32,18 +32,33 @@ widget(container_z, {
     widget(dummy, { width: 0.5em; });
 
     widget(container_x, {
+      hidden: isVoid($self.metadata.year);
+
+      widget(label, {
+        //debug: true;
+        caption: fmt("(%s)", $self.metadata.year);
+        color: select(isFocused() || isHovered() || isPressed(), 0.7, 0.4);
+        sizeScale: 0.9 * $self.textSize;
+      });
+
+      widget(dummy, { width: 0.5em; });
+    });
+
+    widget(container_x, {
+      hidden: !($self.restartpos > 0 || $self.metadata.duration > 0);
+
       widget(label, {
         //debug: true;
         hidden: !($self.restartpos > 0);
         caption: value2duration($self.restartpos) + " / ";
         color: select(isFocused() || isHovered() || isPressed(), 0.7, 0.4);
         sizeScale: 0.9 * $self.textSize;
-        //width: 10em;
         align: center;
       });
 
       widget(label, {
         //debug: true;
+        hidden: !($self.metadata.duration > 0);
         filterConstraintY: true;
         caption: value2duration($self.metadata.duration);
         color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
@@ -51,9 +66,9 @@ widget(container_z, {
         //width: 10em;
         align: right;
       });
-    });
 
-    widget(dummy, { width: 0.5em; });
+      widget(dummy, { width: 0.5em; });
+    });
 
     widget(image, {
       //debug: true;
