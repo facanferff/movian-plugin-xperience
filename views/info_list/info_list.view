@@ -15,5 +15,6 @@ widget(container_y, {
 		#include "panel/info/panel.view";
 	});
 
-	//$nav.currentpage.model.metadata.background = $clone.focused.metadata.backdrop ?? $self.model.metadata.background/* ?? "img/background.png"*/;
+	$nav.currentpage.model.metadata.background = $clone.focused.metadata.backdrop ??
+																							 $nav.currentpage.model.metadata.background;
 });
