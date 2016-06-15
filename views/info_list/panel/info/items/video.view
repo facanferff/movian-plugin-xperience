@@ -152,7 +152,7 @@ widget(container_y, {
       widget(label, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
-        caption: fmt("%s %s", _("Genre:"), $clone.focused.metadata.genre);
+        caption: fmt("%s: %s", _("Genres"), $clone.focused.metadata.genre);
       });
     });
 
