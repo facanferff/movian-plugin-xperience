@@ -1,5 +1,6 @@
 #define LIST_Y_SLIDER(ID, FOCUSABLE=false, NAVFOCUSABLE = true, IMAGE="img/scrollbar.png") {
   widget(slider_y, {
+    id: "scrollbar";
     bind(ID);
     .width = 20;
     .focusable = FOCUSABLE;

@@ -7,7 +7,7 @@ widget(container_y, {
 
     widget(quad, {
       //hidden: !$clone.focused.primaryColor;
-      color: $clone.focused.primaryColor;
+      color: $clone.focused.primaryColor * 0.9;
     });
 
     widget(image, {
@@ -17,170 +17,175 @@ widget(container_y, {
     });
   });
 
-  widget(container_z, {
-    height: 7em;
-
-    widget(quad, {
-      color: $clone.focused.primaryColor;
-    });
+  widget(container_y, {
+    height: 10.5em;
 
     widget(container_z, {
+      filterConstraintY: true;
 
-      // Details
-      widget(list_y, {
-        id: "details:" + $clone.focused.url;
-        navWrap: true;
-        chaseFocus: true;
+      widget(container_z, {
+        filterConstraintY: true;
 
-        margin: 0.5em;
-        spacing: 0.3em;
-
-        // Description
-        widget(label, {
-          caption: $clone.focused.metadata.description ?? "No description available";
-          sizeScale: 0.9;
-          maxlines: 50;
+        widget(quad, {
+          color: $clone.focused.primaryColor;
         });
+
+        // Details
+        widget(list_y, {
+          id: "details:" + $clone.focused.url;
+          navWrap: true;
+          chaseFocus: true;
+
+          margin: 0.5em;
+          spacing: 0.3em;
+
+          // Description
+          widget(label, {
+            caption: $clone.focused.metadata.description ?? "No description available";
+            sizeScale: 0.9;
+            maxlines: 50;
+          });
+        });
+
+        // Scrollbar
+        widget(container_x, {
+          align: right;
+          LIST_Y_SLIDER("details:" + $clone.focused.url, 0.1);
+        });
+
+      });
+    });
+
+    // View/Like/Dislike count
+    widget(container_z, {
+      height: 1.7em;
+      hidden: $clone.focused.metadata.viewCount1 < 1 &&
+              $clone.focused.metadata.likeCount < 1 &&
+              $clone.focused.metadata.dislikeCount < 1;
+
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
       });
 
-      // Scrollbar
       widget(container_x, {
-        align: right;
-        LIST_Y_SLIDER("details:" + $clone.focused.url, 0.1);
-      });
-
-    });
-  });
-
-  // View/Like/Dislike count
-  widget(container_z, {
-    height: 1.7em;
-    hidden: $clone.focused.metadata.viewCount1 < 1 &&
-            $clone.focused.metadata.likeCount < 1 &&
-            $clone.focused.metadata.dislikeCount < 1;
-
-    widget(quad, {
-      color: $clone.focused.primaryColor * 1.9;
-    });
-
-    widget(container_x, {
-      margin: [1em, 0, 1em, 0];
-      //debug: true;
-
-      widget(container_x, {
-        hidden: $clone.focused.metadata.viewCount < 1;
-        filterConstraintX: true;
-        spacing: 0.5em;
-        align: center;
+        margin: [1em, 0, 1em, 0];
         //debug: true;
 
-        icon({
-          size: 0.8em;
-          source: "img/ic_play_arrow_48px.svg";
+        widget(container_x, {
+          hidden: $clone.focused.metadata.viewCount < 1;
+          filterConstraintX: true;
+          spacing: 0.5em;
+          align: center;
+          //debug: true;
+
+          icon({
+            size: 0.8em;
+            source: "img/ic_play_arrow_48px.svg";
+          });
+
+          label({
+            caption: value2quantity($clone.focused.metadata.viewCount);
+          });
         });
 
-        label({
-          caption: value2quantity($clone.focused.metadata.viewCount);
+        widget(container_x, {
+          hidden: $clone.focused.metadata.likeCount < 1;
+          filterConstraintX: true;
+          spacing: 0.5em;
+          align: center;
+          //debug: true;
+
+          icon({
+            size: 0.8em;
+            source: "img/ic_thumb_up_48px.svg";
+          });
+
+          label({
+            caption: value2quantity($clone.focused.metadata.likeCount);
+          });
+        });
+
+        widget(container_x, {
+          hidden: $clone.focused.metadata.dislikeCount < 1;
+          filterConstraintX: true;
+          spacing: 0.5em;
+          align: center;
+          //debug: true;
+
+          icon({
+            size: 0.8em;
+            source: "img/ic_thumb_down_48px.svg";
+          });
+
+          label({
+            caption: value2quantity($clone.focused.metadata.dislikeCount);
+          });
         });
       });
+    });
 
-      widget(container_x, {
-        hidden: $clone.focused.metadata.likeCount < 1;
-        filterConstraintX: true;
-        spacing: 0.5em;
-        align: center;
-        //debug: true;
+    // Year
+    widget(container_z, {
+      height: 1.7em;
+      hidden: isVoid($clone.focused.metadata.year);
 
-        icon({
-          size: 0.8em;
-          source: "img/ic_thumb_up_48px.svg";
-        });
-
-        label({
-          caption: value2quantity($clone.focused.metadata.likeCount);
-        });
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
       });
 
-      widget(container_x, {
-        hidden: $clone.focused.metadata.dislikeCount < 1;
-        filterConstraintX: true;
-        spacing: 0.5em;
-        align: center;
-        //debug: true;
-
-        icon({
-          size: 0.8em;
-          source: "img/ic_thumb_down_48px.svg";
-        });
-
-        label({
-          caption: value2quantity($clone.focused.metadata.dislikeCount);
-        });
+      widget(label, {
+        margin: [0.5em, 0, 0.5em, 0];
+        align: left;
+        caption: fmt("%s %s", _("Year:"), $clone.focused.metadata.year);
       });
     });
-  });
 
-  // Year
-  widget(container_z, {
-    height: 1.7em;
-    hidden: isVoid($clone.focused.metadata.year);
+    // Genre
+    widget(container_z, {
+      height: 1.7em;
+      hidden: isVoid($clone.focused.metadata.genre);
 
-    widget(quad, {
-      color: $clone.focused.primaryColor * 1.9;
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+      });
+
+      widget(label, {
+        margin: [0.5em, 0, 0.5em, 0];
+        align: left;
+        caption: fmt("%s %s", _("Genre:"), $clone.focused.metadata.genre);
+      });
     });
 
-    widget(label, {
-      margin: [0.5em, 0, 0.5em, 0];
-      align: left;
-      caption: fmt("%s %s", _("Year:"), $clone.focused.metadata.year);
-    });
-  });
+    // Seen
+    widget(container_z, {
+      height: 1.7em;
+      hidden: $clone.focused.playcount < 1;
 
-  // Genre
-  widget(container_z, {
-    height: 1.7em;
-    hidden: isVoid($clone.focused.metadata.genre);
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+      });
 
-    widget(quad, {
-      color: $clone.focused.primaryColor * 1.9;
-    });
-
-    widget(label, {
-      margin: [0.5em, 0, 0.5em, 0];
-      align: left;
-      caption: fmt("%s %s", _("Genre:"), $clone.focused.metadata.genre);
-    });
-  });
-
-  // Seen
-  widget(container_z, {
-    height: 1.7em;
-    hidden: $clone.focused.playcount < 1;
-
-    widget(quad, {
-      color: $clone.focused.primaryColor * 1.9;
+      widget(label, {
+        margin: [0.5em, 0, 0.5em, 0];
+        align: left;
+        caption: fmt("%s: %s", _("Last seen"), timeAgo($core.clock.unixtime - $clone.focused.lastplayed));
+      });
     });
 
-    widget(label, {
-      margin: [0.5em, 0, 0.5em, 0];
-      align: left;
-      caption: fmt("%s: %s", _("Last seen"), timeAgo($core.clock.unixtime - $clone.focused.lastplayed));
-    });
-  });
+    // Metadata from
+    widget(container_z, {
+      height: 1.7em;
+      hidden: isVoid($clone.focused.metadata.source);
 
-  // Metadata from
-  widget(container_z, {
-    height: 1.7em;
-    hidden: isVoid($clone.focused.metadata.source);
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+      });
 
-    widget(quad, {
-      color: $clone.focused.primaryColor * 1.9;
-    });
-
-    widget(label, {
-      margin: [0.5em, 0, 0.5em, 0];
-      align: left;
-      caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
+      widget(label, {
+        margin: [0.5em, 0, 0.5em, 0];
+        align: left;
+        caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
+      });
     });
   });
 

@@ -24,7 +24,7 @@ widget(container_x, {
             		         "playlist",  "ic_list_48px",
                          "plugin",    "plugin",
 	                       "movian",    "movian")) + ".svg");
-    width: 4em * $self.itemHeight;
+    width: 2.5em * $self.itemHeight;
     $self.primaryColor = RGBToString(primaryColor() * 0.3);
   });
 

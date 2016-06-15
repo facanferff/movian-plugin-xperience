@@ -9,7 +9,7 @@ widget(container_z, {
 
     widget(image, {
       //debug: true;
-      width: 4em * $self.itemHeight;
+      width: 2.5em * $self.itemHeight;
       color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
       source: $self.metadata.icon ?? ($self.url + "#cover");
       $self.primaryColor = RGBToString(primaryColor() * 0.3);
@@ -25,7 +25,6 @@ widget(container_z, {
       caption: $self.metadata.title;
       color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
       sizeScale: 1.0 * $self.textSize;
-      //width: $ui.width;
       filterConstraintX: true;
     });
 
@@ -63,7 +62,6 @@ widget(container_z, {
         caption: value2duration($self.metadata.duration);
         color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
         sizeScale: 1.0 * $self.textSize;
-        //width: 10em;
         align: right;
       });
 
