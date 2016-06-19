@@ -8,6 +8,7 @@ widget(container_y, {
     widget(quad, {
       //hidden: !$clone.focused.primaryColor;
       color: $clone.focused.primaryColor * 0.9;
+      alpha: 0.6;
     });
 
     widget(image, {
@@ -30,6 +31,7 @@ widget(container_y, {
 
         widget(quad, {
           color: $clone.focused.primaryColor;
+          alpha: 0.8;
         });
 
         // Details
@@ -67,6 +69,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
       });
 
       widget(container_x, {
@@ -136,6 +139,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
       });
 
       widget(label, {
@@ -153,6 +157,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
       });
 
       widget(label, {
@@ -170,6 +175,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
       });
 
       widget(label, {
@@ -188,6 +194,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
       });
 
       widget(label, {

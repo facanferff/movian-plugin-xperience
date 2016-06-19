@@ -18,6 +18,8 @@ widget(container_z, {
         $self.itemHeight = $global.xperience.infoList.itemHeight;
         $self.textSize = $global.xperience.infoList.textSize;
 
+        id: "item";
+
         widget(backdrop, {
           source: "img/backdrop.png";
           color: select($self.primaryColor, $self.primaryColor * 2, "#777777");

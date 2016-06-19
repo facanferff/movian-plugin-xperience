@@ -1,12 +1,39 @@
 widget(container_z, {
   focusable: 0.6;
   focusOnClick: true;
-  onEvent(activate, navOpen($self.url, void, void, $parent.model));
   onEvent(itemMenu, eventWithProp(videoInfo, $self));
+
+  // when clicking the item:
+  // (1) if in touch mode, just focus the item
+  // (2) otherwise, open the url
+  onEvent(activate, select($ui.pointerVisible || ($ui.touch && true),
+                           { focus("item"); },
+                           navOpen($self.url, void, void, $parent.model)));
 
   widget(container_x, {
     //debug: true;
     width: $ui.width;
+
+    widget(container_x, {
+      hidden: !($ui.pointerVisible || ($ui.touch && true));
+      clickable: true;
+      /*onEvent(activate, {
+        focus("item");
+      });*/
+      // open url when in touch mode
+      onEvent(activate, navOpen($self.url, void, void, $parent.model));
+
+      widget(image, {
+        width: 1.5em * $self.itemHeight;
+        source: "img/ic_play_arrow_48px.svg";
+        color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
+      });
+
+      widget(dummy, {
+        //debug: true;
+        width: 0.5em;
+      });
+    });
 
     widget(container_z, {
       //debug: true;
@@ -28,7 +55,7 @@ widget(container_z, {
 
     widget(dummy, {
       //debug: true;
-      width: 1em;
+      width: 0.5em;
     });
 
     widget(label, {
