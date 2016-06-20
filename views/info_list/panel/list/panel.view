@@ -2,6 +2,7 @@
 
 widget(container_z, {
   filterConstraintX: true;
+  height: $ui.height;
 
   widget(backdrop, {
     source: "img/panel.png";
