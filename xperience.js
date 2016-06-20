@@ -53,6 +53,13 @@ settings.createInt("infoList.textSize", "Item's text size", 100, 50, 200, 10, "%
     prop.global.xperience.infoList.textSize = v / 100;
 });
 
+settings.createInfo("info.infoList.info.imageHeight", null,
+    "A bigger item's info image size means a bigger image so less height available for description and others (below the image).\n" +
+    "Note: This setting is only relative to video items, other type of items will remain untouched.");
+settings.createInt("infoList.info.imageHeight", "Item's info image height", 60, 30, 75, 5, "%", function(v) {
+    prop.global.xperience.infoList.info.imageHeight = v / 100;
+});
+
 settings.createInfo("info.infoList.info.textSize", null,
     "A bigger item's info text size means bigger text of the information shown on the right.");
 settings.createInt("infoList.info.textSize", "Item's info text size", 100, 50, 150, 5, "%", function(v) {

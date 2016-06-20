@@ -1,9 +1,10 @@
 #import "common.view"
 
 widget(container_y, {
+  height: $ui.height;
 
   widget(container_z, {
-    filterConstraintY: true;
+    height: 27em * $global.xperience.infoList.info.imageHeight;
 
     widget(quad, {
       //hidden: !$clone.focused.primaryColor;
@@ -16,12 +17,13 @@ widget(container_y, {
                       $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover"));
        saturation: $view.loading;
        alpha: 1 - $view.loading * 0.5;
-       align: top;
+       align: center;
     });
   });
 
   widget(container_y, {
-    height: 10.5em;
+    //height: 10.5em;
+    filterConstraintY: true;
 
     widget(container_z, {
       filterConstraintY: true;
