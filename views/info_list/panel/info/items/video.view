@@ -134,6 +134,50 @@ widget(container_y, {
       });
     });
 
+    // Rating
+    widget(container_z, {
+      height: 1.5em * $global.xperience.infoList.info.textSize;
+      hidden: isVoid($clone.focused.metadata.rating);
+
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
+      });
+
+      widget(container_x, {
+
+        widget(label, {
+          margin: [0.5em, 0, 0.5em, 0];
+          align: left;
+          caption: fmt("%s:", _("Rating"));
+          sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+        });
+
+        widget(container_z, {
+          widget(container_x, {
+            widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+            widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+            widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+            widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+            widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+          });
+
+          widget(clip, {
+            leftPx: select($clone.focused.metadata.rating > 1,
+                           5em * $clone.focused.metadata.rating / 100,
+                           5em * $clone.focused.metadata.rating);
+            widget(container_x, {
+      	     widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+       	     widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+       	     widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+       	     widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+       	     widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+            });
+          });
+        });
+      });
+    });
+
     // Season
     widget(container_z, {
       height: 1.5em * $global.xperience.infoList.info.textSize;
