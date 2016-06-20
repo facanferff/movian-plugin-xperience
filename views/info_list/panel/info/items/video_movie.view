@@ -157,7 +157,6 @@ widget(container_y, {
   });
 
   widget(container_y, {
-    //height: 10.5em;
     filterConstraintY: true;
 
     widget(container_z, {

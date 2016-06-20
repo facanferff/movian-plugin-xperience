@@ -32,8 +32,7 @@ widget(container_z, {
         width: 4em;
         clickable: $ui.pointerVisible || ($ui.touch && true);
         alpha: iir($ui.pointerVisible || ($ui.touch && true), 4);
-        // TODO revert this
-        //onEvent(activate, event("back"));
+        onEvent(activate, event("back"));
         navFocusable: false;
         widget(icon, {
           color: 0.5 + iir(isHovered(), 4);
