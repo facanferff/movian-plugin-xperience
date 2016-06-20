@@ -65,7 +65,7 @@ widget(container_y, {
     // View/Like/Dislike count
     widget(container_z, {
       height: 1.5em * $global.xperience.infoList.info.textSize;
-      hidden: $clone.focused.metadata.viewCount1 < 1 &&
+      hidden: $clone.focused.metadata.viewCount < 1 &&
               $clone.focused.metadata.likeCount < 1 &&
               $clone.focused.metadata.dislikeCount < 1;
 
@@ -134,10 +134,10 @@ widget(container_y, {
       });
     });
 
-    // Year
+    // Season
     widget(container_z, {
       height: 1.5em * $global.xperience.infoList.info.textSize;
-      hidden: isVoid($clone.focused.metadata.year);
+      hidden: isVoid($clone.focused.metadata.season);
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
@@ -147,7 +147,25 @@ widget(container_y, {
       widget(label, {
         margin: [0.5em, 0, 0.5em, 0];
         align: left;
-        caption: fmt("%s: %s", _("Year"), $clone.focused.metadata.year);
+        caption: fmt("%s: %s", _("Season"), $clone.focused.metadata.season);
+        sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+      });
+    });
+
+    // Episode
+    widget(container_z, {
+      height: 1.5em * $global.xperience.infoList.info.textSize;
+      hidden: isVoid($clone.focused.metadata.episode);
+
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.8;
+      });
+
+      widget(label, {
+        margin: [0.5em, 0, 0.5em, 0];
+        align: left;
+        caption: fmt("%s: %s", _("Episode"), $clone.focused.metadata.episode);
         sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
       });
     });
