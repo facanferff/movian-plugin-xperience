@@ -10,9 +10,8 @@ widget(container_y, {
       width: 49em * (1 - $core.xperience.infoList.itemList.width) * $global.xperience.infoList.info.imageHeight;
 
       widget(quad, {
-        //hidden: !$clone.focused.primaryColor;
         color: $clone.focused.primaryColor * 0.9;
-        alpha: 0.6;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(image, {
@@ -27,11 +26,6 @@ widget(container_y, {
     widget(container_z, {
       filterConstraintX: true;
 
-      widget(quad, {
-        color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.7;
-      });
-
       widget(container_y, {
 
         // Rating
@@ -41,7 +35,7 @@ widget(container_y, {
 
           widget(quad, {
             color: $clone.focused.primaryColor * 1.9;
-            alpha: 0.8;
+            alpha: 1.0 * $global.xperience.infoList.alpha;
           });
 
           widget(container_x, {
@@ -85,7 +79,7 @@ widget(container_y, {
 
           widget(quad, {
             color: $clone.focused.primaryColor * 1.9;
-            alpha: 0.8;
+            alpha: 1.0 * $global.xperience.infoList.alpha;
           });
 
           widget(label, {
@@ -104,7 +98,7 @@ widget(container_y, {
 
           widget(quad, {
             color: $clone.focused.primaryColor * 1.9;
-            alpha: 0.8;
+            alpha: 1.0 * $global.xperience.infoList.alpha;
           });
 
           widget(label, {
@@ -123,7 +117,7 @@ widget(container_y, {
 
           widget(quad, {
             color: $clone.focused.primaryColor * 1.9;
-            alpha: 0.8;
+            alpha: 1.0 * $global.xperience.infoList.alpha;
           });
 
           widget(label, {
@@ -142,7 +136,7 @@ widget(container_y, {
 
           widget(quad, {
             color: $clone.focused.primaryColor * 1.9;
-            alpha: 0.8;
+            alpha: 1.0 * $global.xperience.infoList.alpha;
           });
 
           widget(label, {
@@ -151,6 +145,11 @@ widget(container_y, {
             caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
             sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
           });
+        });
+
+        widget(quad, {
+          color: $clone.focused.primaryColor * 1.6;
+          alpha: 1.0 * $global.xperience.infoList.alpha;
         });
       });
     });
@@ -167,7 +166,7 @@ widget(container_y, {
 
         widget(quad, {
           color: $clone.focused.primaryColor;
-          alpha: 0.8;
+          alpha: 1.0 * $global.xperience.infoList.alpha;
         });
 
         // Details

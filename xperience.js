@@ -34,6 +34,10 @@ settings.globalSettings(PREFIX, plugin_info.title, plugin.getLogoPath(),
 
 settings.createDivider("Info List");
 
+settings.createInt("infoList.alpha", "Transparency of panels", 80, 0, 100, 1, "%", function(v) {
+    prop.global.xperience.infoList.alpha = v / 100;
+});
+
 settings.createInfo("info.infoList.itemList.width", null,
     "A bigger value will mean that the item list will use more space horizontally.");
 settings.createInt("infoList.itemList.width", "Item list's screen width proportion", 55, 30, 70, 1, "%", function(v) {

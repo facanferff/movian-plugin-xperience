@@ -7,9 +7,8 @@ widget(container_y, {
     height: 27em * $global.xperience.infoList.info.imageHeight;
 
     widget(quad, {
-      //hidden: !$clone.focused.primaryColor;
-      color: $clone.focused.primaryColor * 0.9;
-      alpha: 0.6;
+      color: $clone.focused.primaryColor * 0.8;
+      alpha: 1.0 * $global.xperience.infoList.alpha;
     });
 
     widget(image, {
@@ -33,7 +32,7 @@ widget(container_y, {
 
         widget(quad, {
           color: $clone.focused.primaryColor;
-          alpha: 0.8;
+          alpha: 1.0 * $global.xperience.infoList.alpha;
         });
 
         // Details
@@ -71,7 +70,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(container_x, {
@@ -141,7 +140,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(container_x, {
@@ -185,7 +184,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(label, {
@@ -203,7 +202,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(label, {
@@ -221,7 +220,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(label, {
@@ -239,7 +238,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(label, {
@@ -258,7 +257,7 @@ widget(container_y, {
 
       widget(quad, {
         color: $clone.focused.primaryColor * 1.9;
-        alpha: 0.8;
+        alpha: 1.0 * $global.xperience.infoList.alpha;
       });
 
       widget(label, {

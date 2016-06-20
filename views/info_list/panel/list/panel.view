@@ -6,6 +6,7 @@ widget(container_z, {
 
   widget(backdrop, {
     source: "img/panel.png";
+    alphaSelf: 1.5 * $global.xperience.infoList.alpha;
 
     widget(list_y, {
       id: "scrollable";
@@ -46,6 +47,6 @@ widget(container_z, {
   // Scrollbar
   widget(container_x, {
     align: right;
-    LIST_Y_SLIDER("scrollable", 0.6, true);
+    LIST_Y_SLIDER("scrollable", 0.1, 0.1);
   });
 });
