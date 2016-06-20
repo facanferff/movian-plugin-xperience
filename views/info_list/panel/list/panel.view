@@ -43,11 +43,9 @@ widget(container_z, {
     });
   });
 
-
   // Scrollbar
-  /*widget(container_x, {
+  widget(container_x, {
     align: right;
-    padding: [0, 0, 0, 0];
-    LIST_Y_SLIDER("scrollable", 0.7, true);
-  });*/
+    LIST_Y_SLIDER("scrollable", 0.6, true);
+  });
 });

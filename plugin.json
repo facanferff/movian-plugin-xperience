@@ -5,7 +5,7 @@
 	"title": "Xperience",
 	"synopsis": "Xperience is the newest skin plugin that promises to improve your experience with Movian. It tries to bring the best themes of other Media Centers to Movian, including Xperience 1080. Note: Touchscreen is not supported",
 	"description": "Xperience is the newest skin plugin that promises to improve your experience with Movian.",
-	"version": "1.0.22",
+	"version": "1.0.23",
 	"showtimeVersion": "5.0.196",
 	"file": "xperience.js",
 	"id": "xperience",

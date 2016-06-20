@@ -2,7 +2,7 @@
   widget(slider_y, {
     id: "scrollbar";
     bind(ID);
-    .width = 20;
+    .width = 10;
     .focusable = FOCUSABLE;
     .navFocusable = NAVFOCUSABLE;
     .alpha = iir(canScroll(), 16);
