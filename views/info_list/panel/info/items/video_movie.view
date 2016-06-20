@@ -1,0 +1,201 @@
+#import "common.view"
+
+widget(container_y, {
+  height: $ui.height;
+
+  widget(container_x, {
+
+    widget(container_z, {
+      height: 33em * $global.xperience.infoList.info.imageHeight;
+      width: 49em * (1 - $core.xperience.infoList.itemList.width) * $global.xperience.infoList.info.imageHeight;
+
+      widget(quad, {
+        //hidden: !$clone.focused.primaryColor;
+        color: $clone.focused.primaryColor * 0.9;
+        alpha: 0.6;
+      });
+
+      widget(image, {
+         source: select($clone.focused.showDefaultImage, "img/ic_movie_48px.svg",
+                        $clone.focused.metadata.icon ?? ($clone.focused.url + "#cover"));
+         saturation: $view.loading;
+         alpha: 1 - $view.loading * 0.5;
+         align: center;
+      });
+    });
+
+    widget(container_z, {
+      filterConstraintX: true;
+
+      widget(quad, {
+        color: $clone.focused.primaryColor * 1.9;
+        alpha: 0.7;
+      });
+
+      widget(container_y, {
+
+        // Rating
+        widget(container_z, {
+          height: 1.5em * $global.xperience.infoList.info.textSize;
+          hidden: isVoid($clone.focused.metadata.rating);
+
+          widget(quad, {
+            color: $clone.focused.primaryColor * 1.9;
+            alpha: 0.8;
+          });
+
+          widget(container_x, {
+
+            widget(label, {
+              margin: [0.5em, 0, 0.5em, 0];
+              align: left;
+              caption: fmt("%s:", _("Rating"));
+              sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+            });
+
+            widget(container_z, {
+              widget(container_x, {
+                widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+                widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+                widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+                widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+                widget(icon, { .color = [1.0, 1.0, 0]; .source = "img/Star.svg"; });
+              });
+
+              widget(clip, {
+                leftPx: select($clone.focused.metadata.rating > 1,
+                               5em * $clone.focused.metadata.rating / 100,
+                               5em * $clone.focused.metadata.rating);
+                widget(container_x, {
+                 widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+                 widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+                 widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+                 widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+                 widget(icon, { .color = [0.2, 0.2, 0]; .source = "img/Star.svg"; });
+                });
+              });
+            });
+          });
+        });
+
+        // Year
+        widget(container_z, {
+          height: 1.7em * $global.xperience.infoList.info.textSize;
+          hidden: isVoid($clone.focused.metadata.year);
+
+          widget(quad, {
+            color: $clone.focused.primaryColor * 1.9;
+            alpha: 0.8;
+          });
+
+          widget(label, {
+            margin: [0.5em, 0, 0.5em, 0];
+            align: left;
+            caption: fmt("%s: %s", _("Year"), $clone.focused.metadata.year);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+            maxlines: 2;
+          });
+        });
+
+        // Genres
+        widget(container_z, {
+          height: 1.8em * $global.xperience.infoList.info.textSize;
+          hidden: isVoid($clone.focused.metadata.genre);
+
+          widget(quad, {
+            color: $clone.focused.primaryColor * 1.9;
+            alpha: 0.8;
+          });
+
+          widget(label, {
+            margin: [0.5em, 0, 0.5em, 0];
+            align: left;
+            caption: fmt("%s: %s", _("Genres"), $clone.focused.metadata.genre);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+            maxlines: 2;
+          });
+        });
+
+        // Seen
+        widget(container_z, {
+          height: 1.5em * $global.xperience.infoList.info.textSize;
+          hidden: $clone.focused.playcount < 1;
+
+          widget(quad, {
+            color: $clone.focused.primaryColor * 1.9;
+            alpha: 0.8;
+          });
+
+          widget(label, {
+            margin: [0.5em, 0, 0.5em, 0];
+            align: left;
+            caption: fmt("%s: %s", _("Last seen"), timeAgo($core.clock.unixtime - $clone.focused.lastplayed));
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+          });
+        });
+
+        // Metadata from
+        widget(container_z, {
+          //debug: true;
+          height: 1.5em * $global.xperience.infoList.info.textSize;
+          hidden: isVoid($clone.focused.metadata.source);
+
+          widget(quad, {
+            color: $clone.focused.primaryColor * 1.9;
+            alpha: 0.8;
+          });
+
+          widget(label, {
+            margin: [0.5em, 0, 0.5em, 0];
+            align: left;
+            caption: fmt("%s: %s", _("Metadata from"), $clone.focused.metadata.source);
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+          });
+        });
+      });
+    });
+  });
+
+  widget(container_y, {
+    //height: 10.5em;
+    filterConstraintY: true;
+
+    widget(container_z, {
+      filterConstraintY: true;
+
+      widget(container_z, {
+        filterConstraintY: true;
+
+        widget(quad, {
+          color: $clone.focused.primaryColor;
+          alpha: 0.8;
+        });
+
+        // Details
+        widget(list_y, {
+          id: "details:" + $clone.focused.url;
+          navWrap: true;
+          chaseFocus: true;
+
+          margin: 0.5em;
+          spacing: 0.3em;
+
+          // Description
+          widget(label, {
+            caption: $clone.focused.metadata.description ?? "No description available";
+            sizeScale: 0.9 * $global.xperience.infoList.info.textSize;
+            maxlines: 50;
+          });
+        });
+
+        // Scrollbar
+        widget(container_x, {
+          align: right;
+          LIST_Y_SLIDER("details:" + $clone.focused.url, 0.1);
+        });
+
+      });
+    });
+  });
+
+});
