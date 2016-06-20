@@ -58,12 +58,27 @@ widget(container_z, {
       width: 0.5em;
     });
 
-    widget(label, {
-      //debug: true;
-      caption: $self.metadata.title;
-      color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
-      sizeScale: 1.0 * $self.textSize;
+    widget(container_y, {
       filterConstraintX: true;
+
+      widget(label, {
+        //debug: true;
+        caption: $self.metadata.title;
+        color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.7);
+        sizeScale: 1.0 * $self.textSize;
+        filterConstraintY: true;
+      });
+
+      widget(label, {
+        //debug: true;
+        hidden: isVoid($self.metadata.tagline) || $global.xperience.infoList.itemHeight < 0.7;
+        caption: $self.metadata.tagline;
+        color: select(isFocused() || isHovered() || isPressed(), 0.9, 0.6);
+        sizeScale: 0.65 * $self.textSize;
+        maxlines: 2;
+        filterConstraintY: true;
+      });
+
     });
 
     widget(dummy, { width: 0.5em; });
