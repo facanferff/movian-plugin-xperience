@@ -48,7 +48,7 @@ widget(container_z, {
       widget(image, {
         source: $self.metadata.icon ?? ($self.url + "#cover");
         color: select(isFocused() || isHovered() || isPressed(), 1.0, 0.6);
-        $self.primaryColor = select(isLoaded(), RGBToString(primaryColor() * 0.3), "#444444");
+        $self.primaryColor = select(isLoaded() && $global.xperience.infoList.useDynamicColor, RGBToString(primaryColor() * 0.3), "#444444");
         $self.showDefaultImage = isError();
       });
     });

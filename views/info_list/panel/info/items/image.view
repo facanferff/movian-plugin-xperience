@@ -9,7 +9,7 @@ widget(container_y, {
     widget(image, {
        // TODO add default image
       source: $clone.focused.url;
-      $clone.focused.primaryColor = RGBToString(primaryColor() * 0.3);
+      $clone.focused.primaryColor = select(isLoaded() && $global.xperience.infoList.useDynamicColor, RGBToString(primaryColor() * 0.3), "#444444");
     });
   });
 

@@ -34,6 +34,10 @@ settings.globalSettings(PREFIX, plugin_info.title, plugin.getLogoPath(),
 
 settings.createDivider("Info List");
 
+settings.createBool("infoList.useDynamicColor", "Use dynamic color for backgrounds", true, function(v) {
+    prop.global.xperience.infoList.useDynamicColor = v;
+})
+
 settings.createInt("infoList.alpha", "Transparency of panels", 80, 0, 100, 1, "%", function(v) {
     prop.global.xperience.infoList.alpha = v / 100;
 });

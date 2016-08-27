@@ -16,7 +16,7 @@ widget(container_x, {
         source: $self.metadata.icon;
         width: 2.5em * $self.itemHeight;
         //debug: true;
-        $self.primaryColor = RGBToString(primaryColor() * 0.3);
+        $self.primaryColor = select(isLoaded() && $global.xperience.infoList.useDynamicColor, RGBToString(primaryColor() * 0.3), "#444444");
       });
 
       widget(container_z, {
